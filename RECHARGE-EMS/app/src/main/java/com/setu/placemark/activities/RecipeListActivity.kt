@@ -14,7 +14,7 @@ import com.setu.placemark.R
 import com.setu.placemark.databinding.ActivityPlacemarkListBinding
 import com.setu.placemark.databinding.CardPlacemarkBinding
 import com.setu.placemark.main.MainApp
-import com.setu.placemark.models.PlacemarkModel
+import com.setu.placemark.models.RecipeModel
 
 class PlacemarkListActivity : AppCompatActivity() {
 
@@ -45,7 +45,7 @@ class PlacemarkListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_add -> {
-                val launcherIntent = Intent(this, PlacemarkActivity::class.java)
+                val launcherIntent = Intent(this, RecipeActivity::class.java)
                 getResult.launch(launcherIntent)
             }
         }
@@ -64,7 +64,7 @@ class PlacemarkListActivity : AppCompatActivity() {
 
 }
 
-class PlacemarkAdapter constructor(private var placemarks: List<PlacemarkModel>) :
+class PlacemarkAdapter constructor(private var placemarks: List<RecipeModel>) :
     RecyclerView.Adapter<PlacemarkAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -84,7 +84,7 @@ class PlacemarkAdapter constructor(private var placemarks: List<PlacemarkModel>)
     class MainHolder(private val binding : CardPlacemarkBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(placemark: PlacemarkModel) {
+        fun bind(placemark: RecipeModel) {
             binding.placemarkTitle.text = placemark.title
             binding.description.text = placemark.description
         }

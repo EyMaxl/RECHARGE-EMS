@@ -1,25 +1,21 @@
 package com.setu.placemark.activities
 
-import android.app.Activity
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.snackbar.Snackbar
 import com.setu.placemark.R
 import com.setu.placemark.databinding.ActivityPlacemarkBinding
 import com.setu.placemark.main.MainApp
-import com.setu.placemark.models.PlacemarkModel
+import com.setu.placemark.models.RecipeModel
 
-import timber.log.Timber
 import timber.log.Timber.i
 
-class PlacemarkActivity : AppCompatActivity() {
+class RecipeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlacemarkBinding
-    var placemark = PlacemarkModel()
+    var placemark = RecipeModel()
     lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.setu.placemark.activities.PlacemarkActivity">
+    tools:context="com.setu.placemark.activities.RecipeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -57,16 +57,40 @@
                 <EditText
                     android:id="@+id/description"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="114dp"
                     android:layout_margin="8dp"
                     android:hint="@string/hint_placemarkDescription"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:maxLength="25"
-                    android:maxLines="1"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    android:gravity="top|start"
                     android:minHeight="48dp"
                     android:padding="8dp"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="14sp" />
+                <!--android:layout_height="wrap_content" <!- Height determined by content -->
+                <!--android:layout_width="match_parent" <!- Fill entire width -->
+                <!--android:scrollbars="vertical" <!- Vertical Scroll Bar -->
+
+                <EditText
+                    android:id="@+id/instruction"
+                    android:layout_width="match_parent"
+                    android:layout_height="374dp"
+                    android:layout_margin="8dp"
+                    android:gravity="top|start"
+                    android:hint="@string/hint_placemarkinstructions"
+                    android:inputType="text"
+                    android:lineSpacingExtra="14sp"
+                    android:lines="6"
+                    android:maxLength="25"
+                    android:maxLines="6"
+                    android:minHeight="48dp"
+                    android:minLines="6"
+                    android:padding="8dp"
+                    android:singleLine="false"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <Button
                     android:id="@+id/btnAdd"
