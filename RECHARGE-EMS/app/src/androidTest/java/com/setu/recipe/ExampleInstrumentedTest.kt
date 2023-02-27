@@ -1,4 +1,4 @@
-package com.setu.placemark
+package com.setu.recipe
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

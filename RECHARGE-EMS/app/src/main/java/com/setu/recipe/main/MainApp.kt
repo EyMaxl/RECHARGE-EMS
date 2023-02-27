@@ -1,13 +1,15 @@
-package com.setu.placemark.main
+package com.setu.recipe.main
 
 import android.app.Application
-import com.setu.placemark.models.RecipeModel
+import com.setu.recipe.models.RecipeMemStore
+import com.setu.recipe.models.RecipeModel
 import timber.log.Timber
 import timber.log.Timber.i
 
 class MainApp : Application() {
 
-    val recipe = ArrayList<RecipeModel>()
+    //val recipe = ArrayList<RecipeModel>()
+    val recipes = RecipeMemStore()
 
     override fun onCreate() {
         super.onCreate()

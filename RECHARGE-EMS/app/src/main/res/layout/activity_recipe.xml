@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.setu.placemark.activities.RecipeActivity">
+    tools:context="com.setu.recipe.activities.RecipeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,10 +14,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
+            android:id="@+id/appBarLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@color/loungeBlue"
             android:fitsSystemWindows="true"
             app:elevation="0dip"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -32,7 +32,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/appBarLayout"
+            android:layout_below="@id/appBarLayout2"
             android:fillViewport="true">
 
             <LinearLayout
@@ -41,12 +41,12 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/placemarkTitle"
+                    android:id="@+id/recipeTitle"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_margin="8dp"
                     android:autofillHints="hint"
-                    android:hint="@string/hint_placemarkTitle"
+                    android:hint="@string/hint_recipeTitle"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="114dp"
                     android:layout_margin="8dp"
-                    android:hint="@string/hint_placemarkDescription"
+                    android:hint="@string/hint_recipeDescription"
                     android:inputType="textMultiLine"
                     android:maxLength="25"
                     android:lines="2"
@@ -77,10 +77,10 @@
                 <EditText
                     android:id="@+id/instruction"
                     android:layout_width="match_parent"
-                    android:layout_height="374dp"
+                    android:layout_height="124dp"
                     android:layout_margin="8dp"
                     android:gravity="top|start"
-                    android:hint="@string/hint_placemarkinstructions"
+                    android:hint="@string/hint_recipeInstructions"
                     android:inputType="text"
                     android:lineSpacingExtra="14sp"
                     android:lines="6"
@@ -101,7 +101,7 @@
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:stateListAnimator="@null"
-                    android:text="@string/button_addPlacemark"
+                    android:text="@string/button_addRecipe"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     tools:ignore="TextContrastCheck" />

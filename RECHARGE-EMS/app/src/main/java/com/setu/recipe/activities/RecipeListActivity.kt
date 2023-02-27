@@ -1,5 +1,6 @@
-package com.setu.placemark.activities
+package com.setu.recipe.activities
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,20 +11,20 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.setu.placemark.R
-import com.setu.placemark.databinding.ActivityPlacemarkListBinding
-import com.setu.placemark.databinding.CardPlacemarkBinding
-import com.setu.placemark.main.MainApp
-import com.setu.placemark.models.RecipeModel
+import com.setu.recipe.R
+import com.setu.recipe.databinding.ActivityRecipeListBinding
+import com.setu.recipe.databinding.CardRecipeBinding
+import com.setu.recipe.main.MainApp
+import com.setu.recipe.models.RecipeModel
 
-class PlacemarkListActivity : AppCompatActivity() {
+class RecipeListActivity : AppCompatActivity(),  RecipeListener {
 
     lateinit var app: MainApp
-    private lateinit var binding: ActivityPlacemarkListBinding
+    private lateinit var binding: ActivityRecipeListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPlacemarkListBinding.inflate(layoutInflater)
+        binding = ActivityRecipeListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.toolbar.title = title
@@ -33,13 +34,16 @@ class PlacemarkListActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        binding.recyclerView.adapter = PlacemarkAdapter(app.placemarks)
+        //binding.recyclerView.adapter = RecipeAdapter(app.recipe)
+        binding.recyclerView.adapter = RecipeAdapter(app.recipes.findAll(), this)
+
 
 
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -58,35 +62,25 @@ class PlacemarkListActivity : AppCompatActivity() {
         ) {
             if (it.resultCode == RESULT_OK) {
                 (binding.recyclerView.adapter)?.
-                notifyItemRangeChanged(0,app.placemarks.size)
+                notifyItemRangeChanged(0,app.recipes.findAll().size)
+            }
+        }
+
+    override fun onRecipeClick(recipe: RecipeModel) {
+        val launcherIntent = Intent(this, RecipeActivity::class.java)
+        launcherIntent.putExtra("recipe_edit", recipe)
+        getClickResult.launch(launcherIntent)
+    }
+
+    private val getClickResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                (binding.recyclerView.adapter)?.
+                notifyItemRangeChanged(0,app.recipes.findAll().size)
             }
         }
 
 }
 
-class PlacemarkAdapter constructor(private var placemarks: List<RecipeModel>) :
-    RecyclerView.Adapter<PlacemarkAdapter.MainHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
-        val binding = CardPlacemarkBinding
-            .inflate(LayoutInflater.from(parent.context), parent, false)
-
-        return MainHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: MainHolder, position: Int) {
-        val placemark = placemarks[holder.adapterPosition]
-        holder.bind(placemark)
-    }
-
-    override fun getItemCount(): Int = placemarks.size
-
-    class MainHolder(private val binding : CardPlacemarkBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(placemark: RecipeModel) {
-            binding.placemarkTitle.text = placemark.title
-            binding.description.text = placemark.description
-        }
-    }
-}

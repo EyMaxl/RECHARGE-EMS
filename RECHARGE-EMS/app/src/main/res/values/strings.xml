@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">RECHARGE</string>
-    <string name="button_addPlacemark">Add Recipe</string>
-    <string name="hint_placemarkTitle">Recipe Title</string>
-    <string name="hint_placemarkDescription">Brief description </string>
-    <string name="hint_placemarkinstructions">Instructions </string>
-    <string name="menu_addPlacemark">Add</string>
-    <string name="menu_canclePlacemark">Cancel</string>
+    <string name="button_addRecipe">Add Recipe</string>
+    <string name="hint_recipeTitle">Recipe Title</string>
+    <string name="hint_recipeDescription">Brief description </string>
+    <string name="hint_recipeInstructions">Instructions </string>
+    <string name="menu_addRecipe">Add</string>
+    <string name="menu_cancleRecipe">Cancel</string>
+    <string name="enter_Title">Please Enter a title</string>
 </resources>

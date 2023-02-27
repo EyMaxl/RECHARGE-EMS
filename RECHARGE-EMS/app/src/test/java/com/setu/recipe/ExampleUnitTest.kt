@@ -1,4 +1,4 @@
-package com.setu.placemark
+package com.setu.recipe
 
 import org.junit.Test
 
