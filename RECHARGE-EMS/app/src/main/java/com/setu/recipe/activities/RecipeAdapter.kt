@@ -32,6 +32,7 @@ class RecipeAdapter constructor(private var recipes: List<RecipeModel>,  private
             RecyclerView.ViewHolder(binding.root) {
 
             fun bind(recipe: RecipeModel, listener: RecipeListener) {
+                binding.user.text = "Maxmilian Grimm"
                 binding.recipeTitle.text = recipe.title
                 binding.description.text = recipe.description
                 binding.instructions.text = recipe.instructions

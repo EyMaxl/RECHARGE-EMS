@@ -77,14 +77,14 @@
                 <EditText
                     android:id="@+id/instruction"
                     android:layout_width="match_parent"
-                    android:layout_height="124dp"
+                    android:layout_height="136dp"
                     android:layout_margin="8dp"
                     android:gravity="top|start"
                     android:hint="@string/hint_recipeInstructions"
                     android:inputType="text"
                     android:lineSpacingExtra="14sp"
                     android:lines="6"
-                    android:maxLength="25"
+                    android:maxLength="500"
                     android:maxLines="6"
                     android:minHeight="48dp"
                     android:minLines="6"
@@ -99,12 +99,28 @@
                     android:layout_margin="16dp"
                     android:background="@color/colorAccent"
                     android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:paddingBottom="4dp"
                     android:stateListAnimator="@null"
                     android:text="@string/button_addRecipe"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp"
                     tools:ignore="TextContrastCheck" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@color/deleteRed"
+                    android:drawableLeft="@android:drawable/ic_menu_delete"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:stateListAnimator="@null"
+                    android:text="Delete"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    tools:ignore="TextContrastCheck" />
+
             </LinearLayout>
         </ScrollView>
 

@@ -4,7 +4,7 @@
     package="com.setu.recipe">
 
     <application
-        android:name="com.setu.recipe.main.MainApp"
+        android:name=".main.MainApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -15,7 +15,11 @@
         android:theme="@style/Theme.Recipe"
         tools:targetApi="31">
         <activity
-            android:name="com.setu.recipe.activities.RecipeListActivity"
+            android:name=".activities.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name=".activities.RecipeListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,13 +28,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.setu.recipe.activities.RecipeActivity"
+            android:name=".activities.RecipeActivity"
             android:exported="true">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
     </application>
 

@@ -11,4 +11,6 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#4c90af</color>
     <color name="loungeBlue">#00aca9</color>
+    <color name="loungeGray">#706f6f</color>
+    <color name="deleteRed">#d91616</color>
 </resources>

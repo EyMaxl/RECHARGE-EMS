@@ -23,19 +23,26 @@ class RecipeListActivity : AppCompatActivity(),  RecipeListener {
     private lateinit var binding: ActivityRecipeListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
         super.onCreate(savedInstanceState)
         binding = ActivityRecipeListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
+        //binding.toolbar.setCollapseIcon(R.drawable.ic_launcher_foreground)
 
         app = application as MainApp
 
         val layoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = layoutManager
-        //binding.recyclerView.adapter = RecipeAdapter(app.recipe)
         binding.recyclerView.adapter = RecipeAdapter(app.recipes.findAll(), this)
+
+       // binding.recyclerView.adapter.notifyDataSetChanged()
+        //binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        //binding.recyclerView.itemAnimator = null
 
 
 
@@ -52,9 +59,15 @@ class RecipeListActivity : AppCompatActivity(),  RecipeListener {
                 val launcherIntent = Intent(this, RecipeActivity::class.java)
                 getResult.launch(launcherIntent)
             }
+            R.id.item_navicon -> {
+                val launcherIntent = Intent(this, SettingsActivity::class.java)
+                getResult.launch(launcherIntent)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
     private val getResult =
         registerForActivityResult(
@@ -79,6 +92,7 @@ class RecipeListActivity : AppCompatActivity(),  RecipeListener {
             if (it.resultCode == Activity.RESULT_OK) {
                 (binding.recyclerView.adapter)?.
                 notifyItemRangeChanged(0,app.recipes.findAll().size)
+                (binding.recyclerView.adapter)?.notifyDataSetChanged()
             }
         }
 
