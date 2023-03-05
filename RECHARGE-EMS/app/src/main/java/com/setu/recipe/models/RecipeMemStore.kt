@@ -25,16 +25,17 @@ class RecipeMemStore : RecipeStore {
     override fun create(recipe: RecipeModel) {
         recipe.id = getId()
         recipes.add(recipe)
-        //saveDataToJson()
         logAll();
         i("created")
     }
+
     override fun update(recipe: RecipeModel) {
         var foundRecipe: RecipeModel? = recipes.find { p -> p.id == recipe.id }
         if (foundRecipe != null) {
             foundRecipe.title = recipe.title
             foundRecipe.description = recipe.description
             foundRecipe.instructions = recipe.instructions
+            foundRecipe.image = recipe.image
             logAll()
             i("updated")
         }
@@ -45,8 +46,6 @@ class RecipeMemStore : RecipeStore {
         if (foundRecipe != null){
             recipes.remove(foundRecipe)
            }
-
-
     }
 
     fun logAll() {

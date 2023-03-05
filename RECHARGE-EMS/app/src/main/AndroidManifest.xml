@@ -15,9 +15,13 @@
         android:theme="@style/Theme.Recipe"
         tools:targetApi="31">
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name=".activities.RecipeListSearchActivity"
             android:exported="false"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_search" />
+        <activity
+            android:name=".activities.NavigationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_navigation" />
         <activity
             android:name=".activities.RecipeListActivity"
             android:exported="true">

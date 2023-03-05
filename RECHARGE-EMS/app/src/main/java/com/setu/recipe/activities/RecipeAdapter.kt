@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.setu.recipe.databinding.CardRecipeBinding
 import com.setu.recipe.models.RecipeModel
+import com.squareup.picasso.Picasso
+import timber.log.Timber.i
 
 
 interface RecipeListener {
@@ -36,6 +38,8 @@ class RecipeAdapter constructor(private var recipes: List<RecipeModel>,  private
                 binding.recipeTitle.text = recipe.title
                 binding.description.text = recipe.description
                 binding.instructions.text = recipe.instructions
+                Picasso.get().load(recipe.image).into(binding.recipeImage2)
+                i(binding.recipeImage2.toString())
                 binding.root.setOnClickListener { listener.onRecipeClick(recipe) }
             }
         }

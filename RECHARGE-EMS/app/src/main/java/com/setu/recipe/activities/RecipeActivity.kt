@@ -1,15 +1,21 @@
 package com.setu.recipe.activities
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
 import com.setu.recipe.R
 import com.setu.recipe.databinding.ActivityRecipeBinding
+import com.setu.recipe.helpers.showImagePicker
 import com.setu.recipe.main.MainApp
 import com.setu.recipe.models.RecipeModel
+import com.squareup.picasso.Picasso
 import org.json.JSONArray
 import org.json.JSONObject
 import timber.log.Timber.i
@@ -18,6 +24,7 @@ import java.io.File
 class RecipeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRecipeBinding
+    private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     var recipe = RecipeModel()
     lateinit var app: MainApp
 
@@ -44,7 +51,18 @@ class RecipeActivity : AppCompatActivity() {
             binding.instruction.setText(recipe.instructions)
             binding.btnDelete.setVisibility(View.VISIBLE)
             binding.btnAdd.setText(R.string.save_recipe)
+            if (recipe.image != Uri.EMPTY) {
+                binding.chooseImage.setText(R.string.change_recipe_image)
+            }
+            Picasso.get()
+                .load(recipe.image)
+                .into(binding.recipeImage)
+
+
         }
+
+
+
 
         /*binding.btnAdd.setOnClickListener() {
            i("add Button Pressed")
@@ -81,7 +99,34 @@ class RecipeActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.chooseImage.setOnClickListener {
+            showImagePicker(imageIntentLauncher)
+        }
+        registerImagePickerCallback()
 
+
+    }
+
+
+    private fun registerImagePickerCallback() {
+        imageIntentLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+            { result ->
+                when(result.resultCode){
+                    RESULT_OK -> {
+                        if (result.data != null) {
+                            i("Got Result ${result.data!!.data}")
+                            recipe.image = result.data!!.data!!
+                            Picasso.get()
+                                .load(recipe.image)
+                                .into(binding.recipeImage)
+                                binding.chooseImage.setText(R.string.change_recipe_image)
+                            binding.recipeImage.getLayoutParams().height = 400;
+                        } // end of if
+                    }
+                    RESULT_CANCELED -> { } else -> { }
+                }
+            }
     }
 
 

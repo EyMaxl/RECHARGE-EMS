@@ -5,7 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.setu.recipe.activities.RecipeListActivity">
+    tools:context="com.setu.recipe.activities.NavigationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
@@ -21,45 +26,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:title=""
-            app:navigationIcon="@android:drawable/ic_delete"
             app:titleTextColor="@color/loungeBlue" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <EditText
+
+        <TextView
             android:id="@+id/editTextTextPersonName2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Profile"
+            android:textSize="20dp"
+            android:gravity="center"
 
-        <EditText
+            />
+
+        <TextView
             android:id="@+id/editTextTextPersonName3"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Favorites"
+            android:textSize="20dp"
+            android:gravity="center"/>
 
-        <EditText
+        <TextView
             android:id="@+id/editTextTextPersonName4"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="70dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Recipes"
+            android:textSize="20dp"
+            android:gravity="center"/>
 
-        <EditText
+        <TextView
             android:id="@+id/editTextTextPersonName5"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Settings"
+            android:textSize="20dp"
+            android:gravity="center"/>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
