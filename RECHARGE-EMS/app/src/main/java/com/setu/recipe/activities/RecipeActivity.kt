@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -16,10 +19,8 @@ import com.setu.recipe.helpers.showImagePicker
 import com.setu.recipe.main.MainApp
 import com.setu.recipe.models.RecipeModel
 import com.squareup.picasso.Picasso
-import org.json.JSONArray
-import org.json.JSONObject
 import timber.log.Timber.i
-import java.io.File
+
 
 class RecipeActivity : AppCompatActivity() {
 
@@ -27,7 +28,7 @@ class RecipeActivity : AppCompatActivity() {
     private lateinit var imageIntentLauncher : ActivityResultLauncher<Intent>
     var recipe = RecipeModel()
     lateinit var app: MainApp
-
+    val items = arrayOf<String>("Gram", "Milliliter")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,6 +105,17 @@ class RecipeActivity : AppCompatActivity() {
         }
         registerImagePickerCallback()
 
+        val adapterItem1 = ArrayAdapter<String>(this,R.layout.dropdownlistitem,items )
+        binding.addIngredient.autoCompleteText.setAdapter(adapterItem1)
+        binding.addIngredient.autoCompleteText.onItemClickListener =
+            OnItemClickListener { parent, view, position, id ->
+                //... your stuff
+                val item = parent.getItemAtPosition(position).toString()
+                Toast.makeText(applicationContext, item,Toast.LENGTH_SHORT).show()
+            }
+        binding.addIngredient.editTextNumber.minValue = 1
+        binding.addIngredient.editTextNumber.maxValue = 1000
+        //binding.addIngredient.editTextNumber.displayedValues = 1
 
     }
 
@@ -121,6 +133,7 @@ class RecipeActivity : AppCompatActivity() {
                                 .load(recipe.image)
                                 .into(binding.recipeImage)
                                 binding.chooseImage.setText(R.string.change_recipe_image)
+                            i("Imagename is ${binding.recipeImage.toString()}")
                             binding.recipeImage.getLayoutParams().height = 400;
                         } // end of if
                     }
@@ -129,56 +142,6 @@ class RecipeActivity : AppCompatActivity() {
             }
     }
 
-
-
-
-/*    private fun saveDataToJson(recipe: RecipeModel){
-        // Create a JSONObject from the recipe object
-        val jsonRecipe = JSONObject()
-        jsonRecipe.put("title", recipe.title)
-        jsonRecipe.put("description", recipe.description)
-        jsonRecipe.put("instructions", recipe.instructions)
-
-        // Write the JSONObject to a file
-        val file = File(filesDir, "recipe.json")
-        file.writeText(jsonRecipe.toString())
-
-        i("JSON data written to file: ${jsonRecipe.toString()}")
-
-        val filename = "recipe.json"
-        val fileContents = applicationContext.openFileInput(filename).bufferedReader().use { it.readText() }
-        i("File contents: $fileContents")
-    }*/
-
-    /*
-    private fun saveDataToJsonFile(context: Context, recipeList: List<RecipeModel>) {
-
-        val gson = Gson()
-        val jsonString = gson.toJson(recipeList)
-
-        val file = File(context.filesDir, "recipe_data.json")
-        file.writeText(jsonString)
-    }
-
-    fun logRecipeData(context: Context) {
-        val file = File(context.filesDir, "recipe_data.json")
-        if (file.exists()) {
-            val json = file.readText()
-            val jsonArray = JSONArray(json)
-            for (i in 0 until jsonArray.length()) {
-                val jsonObject = jsonArray.getJSONObject(i)
-                val title = jsonObject.getString("title")
-                val description = jsonObject.getString("description")
-                val image = jsonObject.getString("image")
-                val ingredients = jsonObject.getString("ingredients")
-                val steps = jsonObject.getString("steps")
-                val rating = jsonObject.getDouble("rating")
-                println("Title: $title, Description: $description, Image: $image, Ingredients: $ingredients, Steps: $steps, Rating: $rating")
-            }
-        } else {
-            println("Recipe data file does not exist.")
-        }
-    }*/
 
     // Inflater für Cancel button
     override fun onCreateOptionsMenu(cancel: Menu): Boolean {
