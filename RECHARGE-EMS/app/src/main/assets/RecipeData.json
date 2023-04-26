@@ -1,0 +1,26 @@
+[
+  {
+    "description": "Healthy Burger Recipe",
+    "id": 1,
+    "image": {},
+    "instructions": "First you need to prepare the salad. Use...",
+    "title": "Burger",
+    "user": "Maximilian Grimm"
+  },
+  {
+    "description": "Pasta with Pesto and vegetables",
+    "id": 2,
+    "image": {},
+    "instructions": "First you need to take a pot and use 1L of Water ...",
+    "title": "Pasta",
+    "user": "Maximilian Grimm"
+  },
+  {
+    "description": "Fried Salmnon w vegetable",
+    "id": 3,
+    "image": {},
+    "instructions": "First you need to cut and prepare the vegetables for... ",
+    "title": "Salmon",
+    "user": "Maximilian Grimm"
+  }
+]

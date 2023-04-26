@@ -1,10 +1,27 @@
 <resources>
     <string name="app_name">RECHARGE</string>
     <string name="button_addRecipe">Add Recipe</string>
+    <string name="button_deleteRecipe">Delete Recipe</string>
     <string name="hint_recipeTitle">Recipe Title</string>
     <string name="hint_recipeDescription">Brief description </string>
     <string name="hint_recipeInstructions">Instructions </string>
     <string name="menu_addRecipe">Add</string>
     <string name="menu_cancleRecipe">Cancel</string>
     <string name="enter_Title">Please Enter a title</string>
+    <string name="save_recipe"> Save Recipe </string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="title_activity_search">Search</string>
+    <string name="button_addImage"> Add Image </string>
+    <string name="select_recipe_image">Select recipe image</string>
+    <string name="change_recipe_image">Change recipe image</string>
+    <string name="enter_ingredient">Enter ingredient</string>
+    <string name="select">Unit</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="click_to_login">Click to Login</string>
+    <string name="click_to_register">Click to register</string>
+    <string name="logout">Logout</string>
+
 </resources>

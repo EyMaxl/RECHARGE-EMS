@@ -23,15 +23,17 @@
             android:title=""
             app:titleTextColor="@color/loungeBlue"
             app:navigationIcon="@drawable/ic_lightningicon"
-             />
+            />
     </com.google.android.material.appbar.AppBarLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="680dp"
+        android:layout_height="match_parent"
         android:scrollbars="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 

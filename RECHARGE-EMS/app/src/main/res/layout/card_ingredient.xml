@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/ingredientNameShow"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:textColor="@color/black"
+                                android:textSize="20sp"
+                                tools:text="Ingredient"
+                                android:paddingRight="75dp"/>
+
+                            <TextView
+                                android:id="@+id/ingredientAmountShow"
+                                android:layout_width="120dp"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:textSize="20sp"
+                                tools:text="Amount" android:paddingRight="15dp"
+                                />
+
+                            <TextView
+                                android:id="@+id/ingredientUnitShow"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLines="1"
+                                android:textSize="20sp"
+                                tools:text="Unit" />
+
+                            <!--<androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnDelete2"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:layout_margin="0dp"
+                                android:background="@color/white"
+                                android:drawableRight="@android:drawable/ic_menu_delete"
+                                android:gravity="center"
+                                android:padding="0dp"
+                                android:stateListAnimator="@null"
+                                tools:ignore="TextContrastCheck" />-->
+
+
+                        </LinearLayout>
+
+
+
+
+
+            </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
