@@ -69,6 +69,7 @@ class RecipeListSearchActivity : AppCompatActivity(),  RecipeListener {
     fun filterList(text : String){
         val filteredList = ArrayList<RecipeModel>()
         for ( item : RecipeModel in app.recipes.findAll()){ // war ursprünglich recipes.recipes
+
             if(item.title.toLowerCase().contains((text.toLowerCase()))){
                 filteredList.add(item)
             }

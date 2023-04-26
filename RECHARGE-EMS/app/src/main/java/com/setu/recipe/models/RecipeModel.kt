@@ -1,10 +1,12 @@
 package com.setu.recipe.models
+
 import android.net.Uri
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.nio.file.Files.list
 
 var image: Uri = Uri.EMPTY
+
 
 @Parcelize
 data class RecipeModel(
@@ -17,6 +19,7 @@ data class RecipeModel(
     var ingredients: ArrayList<IngredientModel> = ArrayList<IngredientModel>()
 ) : Parcelable
 
+
 //var image: Uri = Uri.EMPTY,
 // var image: String = "",
 interface RecipeStore {
@@ -25,5 +28,6 @@ interface RecipeStore {
     fun update(recipe: RecipeModel)
     fun delete(recipe: RecipeModel)
     fun ingredients(recipe: RecipeModel): ArrayList<IngredientModel>?
+
 }
 

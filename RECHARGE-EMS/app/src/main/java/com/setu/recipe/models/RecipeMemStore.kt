@@ -26,6 +26,7 @@ class RecipeMemStore : RecipeStore {
         recipe.id = getRecipeId()
         recipes.add(recipe)
         logAll()
+
         i("created")
     }
 
@@ -42,6 +43,7 @@ class RecipeMemStore : RecipeStore {
 
     }
     override fun delete(recipe: RecipeModel){
+
         val foundRecipe: RecipeModel? = recipes.find { p -> p.id == recipe.id }
         if (foundRecipe != null){
             recipes.remove(foundRecipe)
@@ -50,6 +52,7 @@ class RecipeMemStore : RecipeStore {
 
     override fun ingredients(recipe: RecipeModel): ArrayList<IngredientModel>? {
         TODO("Not yet implemented")
+
     }
 
     fun logAll() {
@@ -63,9 +66,11 @@ class RecipeMemStore : RecipeStore {
             val fileOutputStream = context.openFileOutput("recipes.json", Context.MODE_PRIVATE)
             fileOutputStream.write(jsonString.toByteArray())
             fileOutputStream.close()
+
             i("creating / writing the json succeeded")
         } catch (e: Exception) {
             i("creating / writing the json failed")
+
         }
         val fileInputStream = context.openFileInput("recipes.json")
         val inputStreamReader = InputStreamReader(fileInputStream)
@@ -73,7 +78,9 @@ class RecipeMemStore : RecipeStore {
         val jsonString1 = bufferedReader.readText()
         //val recipes: ArrayList<RecipeModel> = gson.fromJson(jsonString, object : TypeToken<ArrayList<RecipeModel>>() {}.type)
         i(jsonString1)
+
         // for (recipe in recipes) {
+
         //    i(recipe.toString())
         //}
 

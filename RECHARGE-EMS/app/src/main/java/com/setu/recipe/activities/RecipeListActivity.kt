@@ -39,6 +39,10 @@ class RecipeListActivity : AppCompatActivity(),  RecipeListener {
         // binding.recyclerView.adapter.notifyDataSetChanged()
         //binding.recyclerView.layoutManager = LinearLayoutManager(this)
         //binding.recyclerView.itemAnimator = null
+       // binding.recyclerView.adapter.notifyDataSetChanged()
+        //binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        //binding.recyclerView.itemAnimator = null
+
 
 
     }
@@ -57,7 +61,9 @@ class RecipeListActivity : AppCompatActivity(),  RecipeListener {
             R.id.item_navicon -> {
                 val launcherIntent = Intent(this, NavigationActivity::class.java)
                 getResult.launch(launcherIntent)
+
                 finish()
+
             }
             R.id.item_search -> {
                 val launcherIntent = Intent(this, RecipeListSearchActivity::class.java)
@@ -66,8 +72,6 @@ class RecipeListActivity : AppCompatActivity(),  RecipeListener {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
 
 
 

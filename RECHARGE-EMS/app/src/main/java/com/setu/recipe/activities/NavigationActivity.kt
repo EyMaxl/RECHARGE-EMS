@@ -11,6 +11,8 @@ import com.setu.recipe.main.MainApp
 
 class NavigationActivity : AppCompatActivity() {
 
+    //lateinit var app: MainApp - online but local gone
+
     private lateinit var binding: ActivityNavigationBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,12 +24,14 @@ class NavigationActivity : AppCompatActivity() {
         binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
 
-
         binding.profile.setOnClickListener(){
             val launcherIntent = Intent(this, ProfileActivity::class.java)
             startActivity(launcherIntent)
             finish()
         }
+
+        // app = application as MainApp - online but local gone
+
 
     }
 
@@ -42,6 +46,7 @@ class NavigationActivity : AppCompatActivity() {
             R.id.item_back -> {
                 val launcherIntent = Intent(this, RecipeListActivity::class.java)
                 startActivity(launcherIntent)
+
                 finish()
             }
         }

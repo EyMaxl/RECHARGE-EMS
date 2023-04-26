@@ -26,7 +26,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/user"
-
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/recyclerview_border">
 
@@ -72,6 +71,7 @@
 
                         </LinearLayout>
 
+
                     </LinearLayout>
 
                     <ImageView
@@ -98,6 +98,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:src="@drawable/user_image"
                 />
+
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

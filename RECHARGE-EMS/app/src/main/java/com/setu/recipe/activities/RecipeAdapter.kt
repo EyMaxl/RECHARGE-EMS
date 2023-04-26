@@ -22,6 +22,31 @@ class RecipeAdapter constructor(private var recipes: List<RecipeModel>,  private
             .inflate(LayoutInflater.from(parent.context), parent, false)
 
         return MainHolder(binding)
+/*=======
+            return MainHolder(binding)
+        }
+
+        override fun onBindViewHolder(holder: MainHolder, position: Int) {
+            val recipe = recipes[holder.adapterPosition]
+            holder.bind(recipe, listener)
+        }
+
+        override fun getItemCount(): Int = recipes.size
+
+        class MainHolder(private val binding : CardRecipeBinding) :
+            RecyclerView.ViewHolder(binding.root) {
+
+            fun bind(recipe: RecipeModel, listener: RecipeListener) {
+                binding.user.text = "Maxmilian Grimm"
+                binding.recipeTitle.text = recipe.title
+                binding.description.text = recipe.description
+                binding.instructions.text = recipe.instructions
+                Picasso.get().load(recipe.image).into(binding.recipeImage2)
+                i(binding.recipeImage2.toString())
+                binding.root.setOnClickListener { listener.onRecipeClick(recipe) }
+            }
+        }
+>>>>>>> 3efde142d93d5bd0351ac062759fa8ab7dbaa32f*/
     }
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {

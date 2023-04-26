@@ -19,11 +19,13 @@ class MainApp : Application() {
         super.onCreate()
         Timber.plant(Timber.DebugTree())
         i("Recipe started")
+
         //recipes = RecipeMemStore()
         recipes = RecipeJSONStore(applicationContext)
         //recipes.recipes.add(RecipeModel("Maximilian Grimm", 1, "Burger","Healthy Burger Recipe", "First you need to prepare the salad. Use...", a))
 
         /*
+
         // ,
         // , //com.android.providers.downloads.documents/document/msf%3A1000000041
         // , //com.android.providers.downloads.documents/document/msf%3A1000000038

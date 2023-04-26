@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
@@ -48,6 +49,7 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
     private lateinit var database : DatabaseReference
     private val client = OkHttpClient()
 
+
     @SuppressLint("ClickableViewAccessibility", "SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +61,7 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
         setSupportActionBar(binding.toolbarAdd)
 
         app = application as MainApp
+
 
         val database = Firebase.database
         val myRef = database.getReference("Recipes")
@@ -72,6 +75,7 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
         binding.recyclerViewIng.layoutManager = layoutManager
         binding.recyclerViewIng.adapter = IngredientAdapter(ingredients , this)
 
+
         if (intent.hasExtra("recipe_edit")) {
             edit = true
             recipe = intent.extras?.getParcelable("recipe_edit")!!
@@ -80,6 +84,7 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
             binding.instruction.setText(recipe.instructions)
             binding.btnDelete.setVisibility(View.VISIBLE)
             binding.btnAdd.setText(R.string.save_recipe)
+
             ingredients.clear()
             ingredients.addAll(app.recipes.ingredients(recipe)!!)
 
@@ -101,6 +106,7 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
         }*/
         //Alternitive binding
         binding.btnAdd.setOnClickListener() {
+
             var user = Firebase.auth.currentUser
             if (user != null) {
                 recipe.user = user.email.toString()
@@ -151,9 +157,11 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
                 //saveDataToJson()
                 //app.recipes.saveDataToJson(this)
 
+
                 setResult(RESULT_OK)
                 finish()
             }
+
             Snackbar
                 .make(it, R.string.enter_Title, Snackbar.LENGTH_LONG)
                 .show()
@@ -179,11 +187,11 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
                     .show()
             }
 
-
         }
 
         binding.btnDelete.setOnClickListener() {
             app.recipes.delete(recipe.copy())
+//<<<<<<< HEAD
             myRef.child(recipe.copy().title).removeValue()
             setResult(RESULT_OK)
             finish()
@@ -224,9 +232,30 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
             }
             false
         }
+/*=======
+            setResult(RESULT_OK)
+            finish()
+        }
+
+        binding.chooseImage.setOnClickListener {
+            showImagePicker(imageIntentLauncher)
+        }
+        registerImagePickerCallback()
+
+        val adapterItem1 = ArrayAdapter<String>(this,R.layout.dropdownlistitem,items )
+        binding.addIngredient.autoCompleteText.setAdapter(adapterItem1)
+        binding.addIngredient.autoCompleteText.onItemClickListener =
+            OnItemClickListener { parent, view, position, id ->
+                //... your stuff
+                val item = parent.getItemAtPosition(position).toString()
+                Toast.makeText(applicationContext, item,Toast.LENGTH_SHORT).show()
+            }
+        binding.addIngredient.editTextNumber.minValue = 1
+        binding.addIngredient.editTextNumber.maxValue = 1000
+        //binding.addIngredient.editTextNumber.displayedValues = 1
+>>>>>>> 3efde142d93d5bd0351ac062759fa8ab7dbaa32f*/
 
     }
-
 
 
     private fun registerImagePickerCallback() {
@@ -247,6 +276,7 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
                                 .load(recipe.image.toUri())
                                 .into(binding.recipeImage)
                             binding.chooseImage.setText(R.string.change_recipe_image)
+
                         } // end of if
                     }
                     RESULT_CANCELED -> { } else -> { }

@@ -1,9 +1,9 @@
 package com.setu.recipe.helpers
+
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
 import com.setu.recipe.R
-
 
 fun showImagePicker(intentLauncher: ActivityResultLauncher<Intent>, context: Context) {
     var imagePickerTargetIntent = Intent()
@@ -15,4 +15,5 @@ fun showImagePicker(intentLauncher: ActivityResultLauncher<Intent>, context: Con
     imagePickerTargetIntent = Intent.createChooser(imagePickerTargetIntent,
         context.getString(R.string.select_recipe_image))
     intentLauncher.launch(imagePickerTargetIntent)
+
 }

@@ -113,9 +113,7 @@
                     android:id="@+id/addIngredient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    layout="@layout/card_addingredient"
-
-                    />
+                    layout="@layout/card_addingredient"/>
 
                 <Button
                     android:id="@+id/chooseImage"
