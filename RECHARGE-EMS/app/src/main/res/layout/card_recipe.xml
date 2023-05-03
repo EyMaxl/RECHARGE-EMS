@@ -10,7 +10,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           >
+            android:elevation="0dp">
 
             <TextView
                 android:id="@+id/user"
@@ -27,7 +27,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/user"
                 android:layout_marginLeft="10dp"
+                android:elevation="0dp"
                 android:background="@drawable/recyclerview_border">
+                <!---->
+
 
 
                 <LinearLayout

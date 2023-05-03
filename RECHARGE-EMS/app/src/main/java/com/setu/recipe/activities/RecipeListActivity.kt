@@ -46,6 +46,8 @@ class RecipeListActivity : AppCompatActivity(),  RecipeListener {
 
 
     }
+
+    //ItemTouchHelper.
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)

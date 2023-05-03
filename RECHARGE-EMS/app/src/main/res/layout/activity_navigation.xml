@@ -28,43 +28,58 @@
             android:title=""
             app:titleTextColor="@color/loungeBlue" />
     </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical">
 
-
-
-        <TextView
-            android:id="@+id/profile"
+        <ListView
+            android:id="@+id/nav_list"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:ems="10"
-            android:text="Profile"
-            android:textSize="20dp"
-            android:gravity="center"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textAlignment="center" />
 
-        <TextView
-            android:id="@+id/editTextTextPersonName3"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:ems="10"
-            android:text="Favorites"
-            android:textSize="20dp"
-            android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/editTextTextPersonName4"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:ems="10"
-            android:text="Recipes"
-            android:textSize="20dp"
-            android:gravity="center"/>
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/editTextTextPersonName5"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:text="Settings"
-            android:textSize="20dp"
-            android:gravity="center"/>
+
+        <!--
+                <TextView
+                    android:id="@+id/profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:ems="10"
+                    android:text="Profile"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/editTextTextPersonName3"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:ems="10"
+                    android:text="Favorites"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/editTextTextPersonName4"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:ems="10"
+                    android:text="Recipes"
+                    android:textSize="20dp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:ems="10"
+                    android:text="Settings"
+                    android:textSize="20dp"
+                    android:gravity="center"/>-->
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
