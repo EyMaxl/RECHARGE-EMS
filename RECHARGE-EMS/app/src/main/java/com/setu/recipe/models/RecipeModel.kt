@@ -16,7 +16,8 @@ data class RecipeModel(
     var description: String = "",
     var instructions: String = "",
     var image: String = "",
-    var ingredients: ArrayList<IngredientModel> = ArrayList<IngredientModel>()
+    var ingredients: ArrayList<IngredientModel> = ArrayList<IngredientModel>(),
+    var nutritions: NutritionModel = NutritionModel()
 ) : Parcelable
 
 

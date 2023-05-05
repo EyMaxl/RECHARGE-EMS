@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
@@ -18,6 +17,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -25,17 +25,16 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.gson.reflect.TypeToken
 import com.setu.recipe.R
 import com.setu.recipe.databinding.ActivityRecipeBinding
 import com.setu.recipe.helpers.showImagePicker
 import com.setu.recipe.main.MainApp
-import com.setu.recipe.models.IngredientModel
-import com.setu.recipe.models.RecipeModel
+import com.setu.recipe.models.*
 import com.squareup.picasso.Picasso
 import okhttp3.*
 import timber.log.Timber.i
 import java.io.IOException
-
 
 
 class RecipeActivity : AppCompatActivity() , IngredientListener{
@@ -71,7 +70,7 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
 
 
         binding.btnDelete.setVisibility(View.INVISIBLE)
-
+        findViewById<CardView>(R.id.nutritionCard).visibility = View.GONE
         binding.recyclerViewIng.layoutManager = layoutManager
         binding.recyclerViewIng.adapter = IngredientAdapter(ingredients , this)
 
@@ -85,12 +84,21 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
             binding.btnDelete.setVisibility(View.VISIBLE)
             binding.btnAdd.setText(R.string.save_recipe)
 
+            if(recipe.nutritions != null){
+                findViewById<CardView>(R.id.nutritionCard).visibility = View.VISIBLE
+                binding.nutritionCard.nutritionCarb.setText(recipe.nutritions.carbohydrates_total_g.toString())
+                binding.nutritionCard.nutritionFat.setText(recipe.nutritions.fat_total_g.toString())
+                binding.nutritionCard.nutritionProtein.setText(recipe.nutritions.protein_g.toString())
+            }
+
+
+
             ingredients.clear()
             ingredients.addAll(app.recipes.ingredients(recipe)!!)
 
 
             if (recipe.image.toUri() != Uri.EMPTY) {
-                binding.chooseImage.setText(R.string.change_recipe_image)
+                binding.chooseImage.setText(com.setu.recipe.R.string.change_recipe_image)
             }
             Picasso.get()
                 .load(recipe.image.toUri())
@@ -142,8 +150,28 @@ class RecipeActivity : AppCompatActivity() , IngredientListener{
 
             client.newCall(request).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {}
-                override fun onResponse(call: Call, response: Response) = println(response.body()?.string())
+                override fun onResponse(call: Call, response: Response) {
+                    val responseBody = response.body()?.string()
+                    println(responseBody)
+                    val nutritiType = object : TypeToken<List<NutritionModel>>() {}.type
+                    val nutritionResponse : List<NutritionModel> = gsonBuilder.fromJson(responseBody, nutritiType)
+                    println(nutritionResponse)
+                    var fats = 0.0
+                    var carbs = 0.0
+                    var proteins = 0.0
+                    for(n:NutritionModel in nutritionResponse){
+                        fats = fats + n.fat_total_g
+                        carbs = carbs + n.carbohydrates_total_g
+                        proteins = proteins + n.protein_g
+                    }
+                    recipe.nutritions.fat_total_g = fats
+                    recipe.nutritions.carbohydrates_total_g = carbs
+                    recipe.nutritions.protein_g = proteins
+                    println("Nutritional values stored are:\n" + "carbs: " + carbs + ", fats: " + fats + ", protein: " + proteins)
+                }
             })
+
+
 
             if (recipe.title.isNotEmpty()) {
                 if (edit) {
