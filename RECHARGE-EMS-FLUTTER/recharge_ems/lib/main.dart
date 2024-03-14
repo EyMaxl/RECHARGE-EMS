@@ -8,10 +8,24 @@ import 'src/app.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_service.dart';
 import 'src/screens/recipes.dart'; // Import the recipes.dart screen
+import 'package:firebase_core/firebase_core.dart';
+
+
+
+Future<void> init() async {
+  // Initialize Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
+}
+
+
 
 void main() async {
   final settingsController = SettingsController(SettingsService());
   await settingsController.loadSettings();
+
+  
 
   runApp(MyApp(settingsController: settingsController));
 
